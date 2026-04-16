@@ -88,6 +88,22 @@ public class GameDAOImpl implements GameDAO {
     }
 
     @Override
+    public Optional<GameDTO> findByTitle(String title) {
+        log.info("Recherche du jeu par titre : " + title);
+        String sql = "SELECT * FROM games WHERE title = ?";
+        try (Connection conn = DatabaseConnection.getConnection();
+             PreparedStatement pstmt = conn.prepareStatement(sql)) {
+            pstmt.setString(1, title);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) return Optional.of(mapRow(rs));
+            }
+        } catch (SQLException e) {
+            log.log(Level.SEVERE, "Erreur findByTitle", e);
+        }
+        return Optional.empty();
+    }
+
+    @Override
     public boolean deactivate(UUID id) {
         log.warning("Désactivation du jeu : " + id);
         String sql = "UPDATE games SET is_active = false WHERE id = ?";

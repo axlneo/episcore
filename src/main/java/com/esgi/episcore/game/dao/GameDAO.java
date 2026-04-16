@@ -15,6 +15,7 @@ public interface GameDAO {
     Page<GameDTO>       findAllActive(int page, int size);
     Page<GameDTO>       findByGenre(Genre genre, int page, int size);
     long                count();
+    Optional<GameDTO>   findByTitle(String title);
     /** Met is_active = false pour ce jeu. */
     boolean             deactivate(UUID id);
 }
