@@ -9,7 +9,7 @@ Renseigner vos credentials dans `DatabaseConnection.java` :
 ```java
 private static final String URL      = "jdbc:postgresql://[HOST]:5432/postgres";
 private static final String USER     = "postgres";
-private static final String PASSWORD = "[PASSWORD]";
+private static final String PASSWORD = "S2TZsvC3c5XtNxm0";
 ```
 
 ### 2. Créer les tables

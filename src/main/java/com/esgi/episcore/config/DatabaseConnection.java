@@ -12,9 +12,9 @@ import java.sql.SQLException;
  */
 public final class DatabaseConnection {
 
-    private static final String URL      = "jdbc:postgresql://[HOST]:5432/postgres";
+    private static final String URL      = "jdbc:postgresql://db.vbbaxqjqtjtigznuyowj.supabase.co:5432/postgres";
     private static final String USER     = "postgres";
-    private static final String PASSWORD = "[À_REMPLIR]";
+    private static final String PASSWORD = "S2TZsvC3c5XtNxm0";
 
     private DatabaseConnection() {}
 
