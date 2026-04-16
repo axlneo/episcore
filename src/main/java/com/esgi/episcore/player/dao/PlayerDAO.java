@@ -23,6 +23,9 @@ public interface PlayerDAO {
     /** Retourne un player par son username, ou Optional.empty(). */
     Optional<PlayerDTO> findByUsername(String username);
 
+    /** Retourne un player par son email, ou Optional.empty(). */
+    Optional<PlayerDTO> findByEmail(String email);
+
     /** Retourne tous les players paginés. */
     Page<PlayerDTO> findAll(int page, int size);
 
@@ -31,6 +34,12 @@ public interface PlayerDAO {
 
     /** Nombre total de players en base. */
     long count();
+
+    /**
+     * Met à jour la progression d'un joueur (xp + level) et retourne le DTO mis à jour.
+     * (Le calcul du level doit rester côté Service.)
+     */
+    PlayerDTO updateProgress(UUID id, int xp, int level);
 
     /** Supprime un player par son ID. Retourne true si supprimé. */
     boolean deleteById(UUID id);

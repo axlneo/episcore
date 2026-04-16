@@ -53,15 +53,6 @@ public final class Player {
     public int           getXp()        { return xp; }
     public LocalDateTime getCreatedAt() { return createdAt; }
 
-    /**
-     * Met à jour le niveau en fonction de l'XP actuel.
-     * Appelé par le Service après modification de l'XP.
-     * Règle : level = (xp / 100) + 1
-     */
-    public void refreshLevel() {
-        this.level = (this.xp / 100) + 1;
-    }
-
     @Override
     public String toString() {
         return String.format("Player{id=%s, username='%s', level=%d, xp=%d}", id, username, level, xp);

@@ -31,6 +31,6 @@ public final class PlayerDTO {
 
     @Override
     public String toString() {
-        return String.format("PlayerDTO{id=%s, username='%s', level=%d}", id, username, level);
+        return String.format("PlayerDTO{id=%s, username='%s', level=%d, xp=%d}", id, username, level, xp);
     }
 }

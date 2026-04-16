@@ -1,14 +1,8 @@
 package com.esgi.episcore;
 
-import com.esgi.episcore.game.dao.GameDAOImpl;
-import com.esgi.episcore.game.seeder.GameSeeder;
-import com.esgi.episcore.game.service.GameServiceImpl;
 import com.esgi.episcore.player.dao.PlayerDAOImpl;
 import com.esgi.episcore.player.seeder.PlayerSeeder;
 import com.esgi.episcore.player.service.PlayerServiceImpl;
-import com.esgi.episcore.score.dao.ScoreDAOImpl;
-import com.esgi.episcore.score.seeder.ScoreSeeder;
-import com.esgi.episcore.score.service.ScoreServiceImpl;
 import com.esgi.episcore.util.AppLogger;
 
 import java.util.logging.Logger;
@@ -28,14 +22,13 @@ public class Main {
         var playerDAO     = new PlayerDAOImpl();
         var playerService = new PlayerServiceImpl(playerDAO);
 
-        var gameDAO     = new GameDAOImpl();
-        var gameService = new GameServiceImpl(gameDAO);
-
-        var scoreDAO     = new ScoreDAOImpl();
-        var scoreService = new ScoreServiceImpl(scoreDAO);
+        // (Groupes 2 & 3) gardés ici pour plus tard si besoin :
+        // var gameDAO     = new GameDAOImpl();
+        // var gameService = new GameServiceImpl(gameDAO);
+        // var scoreDAO     = new ScoreDAOImpl();
+        // var scoreService = new ScoreServiceImpl(scoreDAO);
 
         // ── CHECKPOINT 1 — tester save() + findById() ───────────────
-        // Décommenter pour tester :
         // var dto = new com.esgi.episcore.player.dto.CreatePlayerDTO("test_user", "test@esgi.fr");
         // var saved = playerService.createPlayer(dto);
         // log.info("Créé : " + saved);
@@ -43,17 +36,17 @@ public class Main {
         // log.info("Trouvé : " + found);
 
         // ── CHECKPOINT 2 — seeders ───────────────────────────────────
-        // new PlayerSeeder(playerService).seed();
+        new PlayerSeeder(playerService).seed();
         // new GameSeeder(gameService).seed();
 
         // ── CHECKPOINT 2 — pagination ────────────────────────────────
-        // var page0 = playerService.getAll(0, 10);
-        // log.info("Page 0 : " + page0);
-        // var page1 = playerService.getAll(1, 10);
-        // log.info("Page 1 : " + page1);
+        var page0 = playerService.getAll(0, 10);
+        log.info("Page 0 : " + page0);
+        var page1 = playerService.getAll(1, 10);
+        log.info("Page 1 : " + page1);
 
         // ── CHECKPOINT 3 — stats ─────────────────────────────────────
-        // playerService.printStats();
+        playerService.printStats();
         // gameService.printStats();
         // scoreService.printStats();
 

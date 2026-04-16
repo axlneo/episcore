@@ -12,9 +12,11 @@ import java.sql.SQLException;
  */
 public final class DatabaseConnection {
 
-    private static final String URL      = "jdbc:postgresql://ep-tiny-surf-abqcjg6x-pooler.eu-west-2.aws.neon.tech:5432/neondb";
-    private static final String USER     = "neondb_owner";
-    private static final String PASSWORD = "npg_0TlPVqXC3gpB";
+    // Supabase exige TLS : sslmode=require
+    private static final String URL      = "jdbc:postgresql://aws-1-eu-central-1.pooler.supabase.com:5432/postgres?sslmode=require";
+    // Avec le pooler, le username est souvent suffixé par le project ref
+    private static final String USER     = "postgres.riuaahhwyxpacpeyzmzx";
+    private static final String PASSWORD = "Soltane010203@";
 
     private DatabaseConnection() {}
 

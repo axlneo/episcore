@@ -31,6 +31,9 @@ public interface PlayerService {
     /** Retourne les N meilleurs joueurs par XP. */
     List<PlayerDTO> getTopPlayers(int limit);
 
+    /** Met à jour l'XP d'un joueur (et recalcule son level). */
+    PlayerDTO setXp(UUID id, int xp);
+
     /** Affiche en console des statistiques globales. */
     void printStats();
 }
