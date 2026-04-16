@@ -35,10 +35,11 @@ public class ScoreDAOImpl implements ScoreDAO {
 
     private static final Logger log = AppLogger.getLogger(ScoreDAOImpl.class);
 
-    @Override public Optional<ScoreDTO> save(CreateScoreDTO dto) {
+    @Override public ScoreDTO save(CreateScoreDTO dto) {
 
         Connection con = null;
         PreparedStatement pstmt = null;
+        ScoreDTO score = null;
 
         String request = "INSERT INTO scores (player_id, game_id, points, duration_seconds, played_at) "
                         + "VALUES ('?', '?', ?, ?, '?')";
@@ -71,14 +72,14 @@ public class ScoreDAOImpl implements ScoreDAO {
             ResultSet rs = pstmt.executeQuery();
 
             if (rs.next()) {
-                return Optional.ofNullable(mapRow(rs));
+                score = mapRow(rs);
             }
 
         } catch (SQLException e) {
             log.log(Level.SEVERE, "La création du statement a échoué.");
         }
 
-        return Optional.empty();
+        return score;
 
     }
 
