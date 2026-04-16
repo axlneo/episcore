@@ -7,9 +7,9 @@ Plateforme de leaderboard gaming — TP ESGI B2 Java OOP
 ### 1. Configurer la base de données
 Renseigner vos credentials dans `DatabaseConnection.java` :
 ```java
-private static final String URL      = "jdbc:postgresql://[HOST]:5432/postgres";
-private static final String USER     = "postgres";
-private static final String PASSWORD = "[PASSWORD]";
+private static final String URL      = "jdbc:postgresql://ep-tiny-surf-abqcjg6x-pooler.eu-west-2.aws.neon.tech:5432/neondb";
+private static final String USER     = "neondb_owner";
+private static final String PASSWORD = "npg_0TlPVqXC3gpB";
 ```
 
 ### 2. Créer les tables
