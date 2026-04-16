@@ -12,9 +12,9 @@ import java.sql.SQLException;
  */
 public final class DatabaseConnection {
 
-    private static final String URL      = "jdbc:postgresql://db.vbbaxqjqtjtigznuyowj.supabase.co:5432/postgres";
-    private static final String USER     = "postgres";
-    private static final String PASSWORD = "S2TZsvC3c5XtNxm0";
+    private static final String URL      = "jdbc:postgresql://ep-tiny-surf-abqcjg6x-pooler.eu-west-2.aws.neon.tech:5432/neondb";
+    private static final String USER     = "neondb_owner";
+    private static final String PASSWORD = "npg_0TlPVqXC3gpB";
 
     private DatabaseConnection() {}
 
