@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface ScoreDAO {
-    ScoreDTO            save(CreateScoreDTO dto);
+    Optional<ScoreDTO>  save(CreateScoreDTO dto);
     Optional<ScoreDTO>  findById(UUID id);
     Page<ScoreDTO>      findAll(int page, int size);
     Page<ScoreDTO>      findByPlayerId(UUID playerId, int page, int size);
