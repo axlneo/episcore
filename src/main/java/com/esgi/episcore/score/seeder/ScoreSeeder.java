@@ -26,21 +26,50 @@ import java.util.logging.Logger;
  */
 public class ScoreSeeder {
 
+    private static final int TARGET_SCORES = 2000;
+    private static final int LOG_BATCH_SIZE = 200;
+
     private static final Logger log = AppLogger.getLogger(ScoreSeeder.class);
 
     private final ScoreService scoreService;
+    private final Random random = new Random();
 
     public ScoreSeeder(ScoreService scoreService) {
+        if (scoreService == null) {
+            throw new IllegalArgumentException("scoreService ne peut pas être null");
+        }
         this.scoreService = scoreService;
     }
 
     public void seed(List<UUID> playerIds, List<UUID> gameIds) {
         log.info("Démarrage du seeder Scores — cible : 2000 scores");
+        if (playerIds == null || gameIds == null) {
+            log.warning("Impossible de seeder : listes playerIds/gameIds nulles !");
+            return;
+        }
         if (playerIds.isEmpty() || gameIds.isEmpty()) {
             log.warning("Impossible de seeder : aucun player ou game en base !");
             return;
         }
-        // TODO
-        throw new UnsupportedOperationException("seed() — À implémenter");
+
+        for (int i = 1; i <= TARGET_SCORES; i++) {
+            UUID playerId = playerIds.get(random.nextInt(playerIds.size()));
+            UUID gameId = gameIds.get(random.nextInt(gameIds.size()));
+
+            CreateScoreDTO dto = new CreateScoreDTO(
+                playerId,
+                gameId,
+                random.nextInt(10_001),
+                30 + random.nextInt(3_571)
+            );
+
+            scoreService.addScore(dto);
+
+            if (i % LOG_BATCH_SIZE == 0) {
+                log.info("Scores seedés : " + i + "/" + TARGET_SCORES);
+            }
+        }
+
+        log.info("Seeder Scores terminé : " + TARGET_SCORES + " scores insérés");
     }
 }
